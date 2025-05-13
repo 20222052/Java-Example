@@ -2,11 +2,14 @@ package bmi;
 
 import java.io.IOException;
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 
+@WebFilter("/bmi")
 public class BMIInputFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
+    	System.out.println("BMIInputFilter đang chạy...");
         try {
             double weight = Double.parseDouble(request.getParameter("weight"));
             double height = Double.parseDouble(request.getParameter("height"));

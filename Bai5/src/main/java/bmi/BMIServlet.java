@@ -2,8 +2,10 @@ package bmi;
 
 import java.io.IOException;
 import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
+@WebServlet("/bmi")
 public class BMIServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
