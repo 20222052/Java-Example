@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="${message}"></h1>
+<table class="table borderless" th:each="std : ${students}">
+    <thead>
+    <tr>
+        <th>Họ tên</th>
+        <th>Địa chỉ</th>
+        <th>STD</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td scope="row" th:text="${std.fullname}"></td>
+        <td th:text="${std.address}"></td>
+        <td th:text="${std.phone}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
