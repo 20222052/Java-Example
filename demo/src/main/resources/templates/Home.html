@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1 th:text="${message}"></h1>
-<table class="table borderless" th:each="std : ${students}">
+<a th:href="@{/login/logout}">Đăng xuất</a>
+<table class="table borderless  " th:each="std : ${students}">
     <thead>
     <tr>
         <th>Họ tên</th>
