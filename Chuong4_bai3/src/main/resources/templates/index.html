@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh sách người dùng</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Danh sách người dùng</h2>
+    <br>
+    <a class="btn btn-outline-danger" th:href="@{/logout}">Đăng xuất</a>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Tên đăng nhập</th>
+            <th>Quyền</th>
+            <th>Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}">1</td>
+            <td th:text="${user.username}">user1</td>
+            <td th:text="${user.role == 0} ? 'Admin' : (user.role == 1 ? 'User' : 'Không xác định')"></td>
+            <td>
+                <a th:href="@{'/delete/' + ${user.id}}"
+                   class="btn btn-danger btn-sm"
+                   th:if="${session.userSession.getRole() == 0}"
+                   onclick="return confirm('Bạn có chắc chắn muốn xóa?');">
+                    Xóa
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Optional JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

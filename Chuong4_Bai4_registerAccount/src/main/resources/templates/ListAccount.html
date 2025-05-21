@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh sách tài khoản</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Danh sách tài khoản</h2>
+    <div th:if="${message}" class="alert alert-success" role="alert">
+        <p th:text="${message}"></p>
+    </div>
+    <div th:if="${error}" class="alert alert-danger" role="alert">
+        <p th:text="${error}"></p>
+    </div>
+
+    <table class="table table-striped table-hover table-bordered">
+        <div style="margin-right: 20px; margin-bottom: 20px;">
+            <a href="/account/register" class="btn btn-primary">Tạo Tài Khoản</a>
+            <a th:if="${session.user}" href="/account/logout" class="btn btn-danger">Đăng xuất</a>
+            <a th:if="${session.user}" href="/account/logout" class="btn btn-danger">Đăng xuất</a>
+        </div>
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Tên đăng nhập</th>
+            <th>Email</th>
+            <th>Mật khẩu</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${users}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.username}"></td>
+            <td th:text="${item.email}"></td>
+            <td th:text="${item.password}"></td>
+            <td>
+                <a class="btn btn-danger" th:href="@{'/account/delete/' + ${item.id}}">Xoá</a>
+                <a class="btn btn-success" >Sửa</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+</body>
+</html>
